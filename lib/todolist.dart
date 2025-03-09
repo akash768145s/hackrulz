@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+// flutter_riverpod: ^2.0.0
+// hive: ^2.2.3
+// hive_flutter: ^1.1.0
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
