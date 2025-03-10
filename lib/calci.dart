@@ -61,20 +61,19 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   }
 
   Widget buildButton(String buttonText, {Color? color}) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ElevatedButton(
-        onPressed: () => buttonPressed(buttonText),
-        style: ElevatedButton.styleFrom(
-          shape: const CircleBorder(),
-          padding: const EdgeInsets.all(20),
-          backgroundColor: color ?? Colors.grey[800],
-          foregroundColor: Colors.white,
+    return ElevatedButton(
+      onPressed: () => buttonPressed(buttonText),
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.all(20),
+        backgroundColor: color ?? Colors.grey[900],
+        foregroundColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
         ),
-        child: Text(
-          buttonText,
-          style: const TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
-        ),
+      ),
+      child: Text(
+        buttonText,
+        style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
       ),
     );
   }
@@ -86,58 +85,47 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       body: Column(
         children: [
           Expanded(
+            flex: 2,
             child: Container(
               alignment: Alignment.bottomRight,
               padding: const EdgeInsets.all(32),
               child: Text(
                 output,
-                style: const TextStyle(fontSize: 64, fontWeight: FontWeight.w500, color: Colors.white),
+                style: const TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.white),
               ),
             ),
           ),
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: const BoxDecoration(
-              color: Colors.black,
-              borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-              boxShadow: [BoxShadow(color: Colors.black54, blurRadius: 10)],
-            ),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: ["C", "/", "*", "-"]
-                      .map((text) => buildButton(text, color: text == "C" ? Colors.red : Colors.orange))
-                      .toList(),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: ["7", "8", "9"]
-                      .map((text) => buildButton(text, color: Colors.blueGrey))
-                      .toList(),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: ["4", "5", "6"]
-                      .map((text) => buildButton(text, color: Colors.blueGrey))
-                      .toList(),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: ["1", "2", "3"]
-                      .map((text) => buildButton(text, color: Colors.blueGrey))
-                      .toList(),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    buildButton("0", color: Colors.blueGrey),
-                    buildButton(".", color: Colors.blueGrey),
-                    buildButton("=", color: Colors.greenAccent),
-                    buildButton("+", color: Colors.orange),
-                  ],
-                ),
-              ],
+          Expanded(
+            flex: 4,
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              decoration: const BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+              ),
+              child: GridView.count(
+                crossAxisCount: 4,
+                crossAxisSpacing: 8,
+                mainAxisSpacing: 8,
+                children: [
+                  buildButton("C", color: Colors.red),
+                  buildButton("/", color: Colors.orange),
+                  buildButton("*", color: Colors.orange),
+                  buildButton("-", color: Colors.orange),
+                  buildButton("7"),
+                  buildButton("8"),
+                  buildButton("9"),
+                  buildButton("+", color: Colors.orange),
+                  buildButton("4"),
+                  buildButton("5"),
+                  buildButton("6"),
+                  buildButton("=", color: Colors.green),
+                  buildButton("1"),
+                  buildButton("2"),
+                  buildButton("3"),
+                  buildButton("0"),
+                ],
+              ),
             ),
           ),
         ],
