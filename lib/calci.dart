@@ -1,82 +1,58 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const CalculatorApp());
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: CalculatorApp(),
+  ));
 }
 
-class CalculatorApp extends StatelessWidget {
-  const CalculatorApp({super.key});
-
+class CalculatorApp extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const CalculatorScreen(),
-    );
-  }
+  _CalculatorAppState createState() => _CalculatorAppState();
 }
 
-class CalculatorScreen extends StatefulWidget {
-  const CalculatorScreen({super.key});
-
-  @override
-  _CalculatorScreenState createState() => _CalculatorScreenState();
-}
-
-class _CalculatorScreenState extends State<CalculatorScreen> {
-  String output = "0";
-  String expression = ""; // Stores "9+9"
+class _CalculatorAppState extends State<CalculatorApp> {
+  String result = "0";
   double num1 = 0;
   double num2 = 0;
-  String operand = "";
+  String op = "";
 
-  void buttonPressed(String buttonText) {
+  void handleButton(String btn) {
     setState(() {
-      if (buttonText == "C") {
-        output = "0";
-        expression = "";
+      if (btn == "C") {
+        result = "0";
         num1 = 0;
         num2 = 0;
-        operand = "";
-      } else if (buttonText == "=") {
-        num2 = double.parse(output);
-        if (operand.isNotEmpty) {
-          expression += output; // Show full expression before result
-        }
-        if (operand == "+") {
-          output = (num1 + num2).toString();
-        } else if (operand == "-") {
-          output = (num1 - num2).toString();
-        } else if (operand == "*") {
-          output = (num1 * num2).toString();
-        } else if (operand == "/") {
-          output = (num1 / num2).toString();
-        }
-        num1 = 0;
-        num2 = 0;
-        operand = "";
-      } else if (["+", "-", "*", "/"].contains(buttonText)) {
-        num1 = double.parse(output);
-        operand = buttonText;
-        expression = output + buttonText; // Show "9+"
-        output = "0";
+        op = "";
+      } else if (["+", "-", "*", "/"].contains(btn)) {
+        num1 = double.parse(result);
+        op = btn;
+        result = "0";
+      } else if (btn == "=") {
+        num2 = double.parse(result);
+        if (op == "+") result = (num1 + num2).toString();
+        if (op == "-") result = (num1 - num2).toString();
+        if (op == "*") result = (num1 * num2).toString();
+        if (op == "/") result = (num1 / num2).toString();
       } else {
-        output = output == "0" ? buttonText : output + buttonText;
+        result = result == "0" ? btn : result + btn;
       }
     });
   }
 
-  Widget buildButton(String text, {Color color = Colors.blue}) {
+  Widget buildButton(String text) {
     return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.all(5),
+      child: Container(
+        margin: const EdgeInsets.all(4),
         child: ElevatedButton(
-          onPressed: () => buttonPressed(text),
+          onPressed: () => handleButton(text),
           style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.all(20),
-            backgroundColor: color,
-            foregroundColor: Colors.white,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+            backgroundColor: Colors.white,
+            foregroundColor: Colors.black,
+            padding: const EdgeInsets.all(22),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           ),
           child: Text(text, style: const TextStyle(fontSize: 24)),
         ),
@@ -87,32 +63,47 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.black,
       body: Column(
         children: [
           Expanded(
             child: Container(
-              color: Colors.white,
-              padding: const EdgeInsets.all(20),
               alignment: Alignment.bottomRight,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(expression, style: const TextStyle(fontSize: 24, color: Colors.black54)), // Show "9+9"
-                  Text(output, style: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold)),
-                ],
+              padding: const EdgeInsets.all(24),
+              child: Text(
+                result,
+                style: const TextStyle(
+                  fontSize: 48,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
-          Column(
-            children: [
-              Row(children: ["7", "8", "9", "/"].map((t) => buildButton(t, color: Colors.orange)).toList()),
-              Row(children: ["4", "5", "6", "*"].map((t) => buildButton(t, color: Colors.orange)).toList()),
-              Row(children: ["1", "2", "3", "-"].map((t) => buildButton(t, color: Colors.orange)).toList()),
-              Row(children: ["C", "0", "=", "+"].map((t) => buildButton(t, color: t == "C" ? Colors.red : Colors.blue)).toList()),
-            ],
-          ),
+          Row(children: [
+            buildButton("7"),
+            buildButton("8"),
+            buildButton("9"),
+            buildButton("/")
+          ]),
+          Row(children: [
+            buildButton("4"),
+            buildButton("5"),
+            buildButton("6"),
+            buildButton("*")
+          ]),
+          Row(children: [
+            buildButton("1"),
+            buildButton("2"),
+            buildButton("3"),
+            buildButton("-")
+          ]),
+          Row(children: [
+            buildButton("C"),
+            buildButton("0"),
+            buildButton("="),
+            buildButton("+")
+          ]),
         ],
       ),
     );
