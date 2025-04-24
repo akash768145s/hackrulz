@@ -145,3 +145,22 @@ class _NoteAppState extends State<NoteApp> {
     );
   }
 }
+
+
+// MaterialApp
+// └── NoteApp (StatefulWidget)
+//     └── Scaffold
+//         ├── AppBar → Text("My Notes")
+//         ├── body (Conditional)
+//         │   ├── if empty → Center → Text("No notes yet.")
+//         │   └── ListView.builder
+//         │       └── ListTile (each note)
+//         │           ├── Text (title)
+//         │           ├── Text (content preview)
+//         │           ├── onTap → View Note
+//         │           └── Row (edit & delete buttons)
+//         └── FloatingActionButton → Add Note
+
+// Dialogs:
+// - Add/Edit → AlertDialog with title & content fields
+// - View → AlertDialog with read-only content
