@@ -136,3 +136,28 @@ class _TodoHomePageState extends State<TodoHomePage> {
     );
   }
 }
+
+
+// MaterialApp
+// └── TodoHomePage (StatefulWidget)
+//     └── Scaffold
+//         ├── AppBar
+//         │   └── Text ("To-Do App")
+//         └── Padding
+//             └── Column
+//                 ├── Row
+//                 │   ├── Expanded
+//                 │   │   └── TextField (Enter new task)
+//                 │   └── IconButton (Add)
+//                 ├── SizedBox (spacing)
+//                 └── Expanded
+//                     └── Conditional
+//                         ├── if _tasks.isEmpty
+//                         │   └── Center → Text ("No tasks added yet.")
+//                         └── else
+//                             └── ListView.builder
+//                                 └── ListTile (for each task)
+//                                     ├── Text (task name)
+//                                     └── Row (trailing)
+//                                         ├── IconButton (Edit)
+//                                         └── IconButton (Delete)

@@ -125,3 +125,21 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
     );
   }
 }
+
+
+// BMICalculatorScreen (StatefulWidget)
+// └── Scaffold
+//     ├── AppBar
+//     │   └── Text ('BMI Calculator')
+//     └── Padding
+//         └── SingleChildScrollView
+//             └── Column
+//                 ├── _buildInputField (TextField for weight)
+//                 ├── SizedBox (spacing)
+//                 ├── _buildInputField (TextField for height)
+//                 ├── SizedBox (spacing)
+//                 ├── ElevatedButton ("Calculate BMI")
+//                 ├── SizedBox (spacing)
+//                 └── _buildResult
+//                     ├── Text (BMI result)
+//                     └── Text (BMI category)

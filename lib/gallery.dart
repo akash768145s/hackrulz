@@ -138,3 +138,29 @@ class _ImageGalleryState extends State<ImageGallery> {
     );
   }
 }
+
+
+// ImageGallery (StatefulWidget)
+// └── Scaffold
+//     ├── AppBar
+//     │   └── Text ("Image Gallery")
+//     ├── RefreshIndicator
+//     │   └── FutureBuilder<List<String>>
+//     │       ├── if (waiting)
+//     │       │   └── Center
+//     │       │       └── CircularProgressIndicator
+//     │       ├── if (error || empty)
+//     │       │   └── Center
+//     │       │       └── Column
+//     │       │           ├── Icon (error)
+//     │       │           ├── SizedBox
+//     │       │           ├── Text ("Failed to load images")
+//     │       │           ├── SizedBox
+//     │       │           └── ElevatedButton ("Retry")
+//     │       └── if (hasData)
+//     │           └── Padding
+//     │               └── LayoutBuilder
+//     │                   └── GridView.builder
+//     │                       └── CachedNetworkImage or Image.network (for each image)
+//     └── FloatingActionButton
+//         └── Icon (refresh)

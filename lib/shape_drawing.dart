@@ -113,3 +113,21 @@ class Shape {
 
   Shape({required this.type, required this.position});
 }
+
+
+
+// MaterialApp
+// └── ShapeDrawerScreen (StatefulWidget)
+//     └── Scaffold
+//         ├── AppBar
+//         │   └── Text ("Shape Drawer")
+//         ├── body: GestureDetector
+//         │   └── onTapDown → _addShape
+//         │   └── Container (white background)
+//         │       └── CustomPaint
+//         │           └── ShapePainter (paints shapes)
+//         └── BottomAppBar
+//             └── Row (mainAxisAlignment: spaceAround)
+//                 ├── DropdownButton<String> ("Circle" / "Rectangle")
+//                 │   └── DropdownMenuItem<Text>
+//                 └── ElevatedButton ("Clear")

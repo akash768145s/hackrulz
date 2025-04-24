@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // google_fonts: ^4.0.4
+
 void main() {
   runApp(CalorieBurnCalculatorApp());
 }

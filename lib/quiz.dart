@@ -239,3 +239,33 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
     super.dispose();
   }
 }
+// ProviderScope
+// └── MaterialApp
+//     └── QuizScreen (ConsumerStatefulWidget)
+//         └── if quiz is finished:
+//             └── Scaffold
+//                 ├── AppBar
+//                 │   └── Text ("Quiz Finished")
+//                 └── Center
+//                     └── Column
+//                         ├── Text ("Your Score: ...")
+//                         ├── SizedBox
+//                         └── ElevatedButton ("Restart Quiz")
+//         └── else (quiz in progress):
+//             └── Scaffold
+//                 ├── AppBar
+//                 │   └── Text ("Quiz App")
+//                 └── Padding
+//                     └── Column
+//                         ├── Text ("Question X/Y")
+//                         ├── SizedBox
+//                         ├── Text (question text)
+//                         ├── SizedBox
+//                         ├── LinearProgressIndicator (timer bar)
+//                         ├── SizedBox
+//                         ├── Text ("Time Left: Xs")
+//                         ├── SizedBox
+//                         └── List.generate(...ElevatedButton for options)
+//                             ├── ElevatedButton (option 1)
+//                             ├── ElevatedButton (option 2)
+//                             ├── ...

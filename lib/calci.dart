@@ -109,3 +109,33 @@ class _CalculatorAppState extends State<CalculatorApp> {
     );
   }
 }
+
+
+// MaterialApp
+// └── CalculatorApp (StatefulWidget)
+//     └── Scaffold
+//         ├── backgroundColor: black
+//         └── Column
+//             ├── Expanded (display result area)
+//             │   └── Container
+//             │       └── Text (result)
+//             ├── Row
+//             │   ├── buildButton("7")
+//             │   ├── buildButton("8")
+//             │   ├── buildButton("9")
+//             │   └── buildButton("/")
+//             ├── Row
+//             │   ├── buildButton("4")
+//             │   ├── buildButton("5")
+//             │   ├── buildButton("6")
+//             │   └── buildButton("*")
+//             ├── Row
+//             │   ├── buildButton("1")
+//             │   ├── buildButton("2")
+//             │   ├── buildButton("3")
+//             │   └── buildButton("-")
+//             └── Row
+//                 ├── buildButton("C")
+//                 ├── buildButton("0")
+//                 ├── buildButton("=")
+//                 └── buildButton("+")

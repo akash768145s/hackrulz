@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
-
+  // video_player: ^2.7.0
 void main() => runApp(const VideoPlayerApp());
 
 class VideoPlayerApp extends StatelessWidget {

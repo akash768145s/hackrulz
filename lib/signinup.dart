@@ -184,3 +184,27 @@ class _LoginSignupPageState extends State<LoginSignupPage> {
     );
   }
 }
+
+
+
+// MaterialApp
+// └── LoginSignupPage (StatefulWidget)
+//     └── Scaffold
+//         ├── AppBar
+//         │   └── Text (Login / Sign Up)
+//         └── LayoutBuilder
+//             └── Padding
+//                 └── Form
+//                     └── ListView
+//                         ├── Conditional:
+//                         │   ├── _buildLoginForm (if isLogin)
+//                         │   │   ├── TextFormField (Email)
+//                         │   │   └── TextFormField (Password with toggle icon)
+//                         │   └── _buildSignupForm (if !isLogin)
+//                         │       ├── TextFormField (Email)
+//                         │       ├── TextFormField (Password with toggle icon)
+//                         │       └── TextFormField (Confirm Password)
+//                         ├── SizedBox
+//                         ├── ElevatedButton (Submit)
+//                         ├── SizedBox
+//                         └── TextButton (Toggle login/signup)

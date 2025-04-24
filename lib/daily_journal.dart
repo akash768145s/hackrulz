@@ -98,3 +98,26 @@ class _JournalScreenState extends State<JournalScreen> {
     );
   }
 }
+
+
+
+// MaterialApp
+// └── JournalScreen (StatefulWidget)
+//     └── Scaffold
+//         ├── AppBar
+//         │   └── Text ('Daily Journal')
+//         └── Padding
+//             └── Column
+//                 ├── TextField (User input for journal entry)
+//                 ├── SizedBox (spacing)
+//                 ├── ElevatedButton ("Save Entry")
+//                 ├── SizedBox (spacing)
+//                 └── Expanded
+//                     └── Conditional (_entries.isEmpty)
+//                         ├── Center
+//                         │   └── Text ("No journal entries yet.")
+//                         └── ListView.builder
+//                             └── For each entry in _entries:
+//                                 └── Card
+//                                     └── Padding
+//                                         └── Text (journal entry)

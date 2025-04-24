@@ -155,3 +155,39 @@ class _InputFormScreenState extends State<InputFormScreen> {
     );
   }
 }
+
+
+// MaterialApp
+// └── InputFormScreen (StatefulWidget)
+//     └── Scaffold
+//         ├── AppBar
+//         │   └── Text ("Form with Validation")
+//         └── Padding
+//             └── SingleChildScrollView
+//                 └── Form
+//                     └── Column
+//                         ├── Text ("Please fill out the form below")
+//                         ├── SizedBox
+//                         ├── TextFormField (Name)
+//                         │   └── InputDecoration
+//                         │       ├── labelText
+//                         │       ├── hintText
+//                         │       ├── prefixIcon → Icon(Icons.person)
+//                         │       └── border → OutlineInputBorder
+//                         ├── SizedBox
+//                         ├── TextFormField (Email)
+//                         │   └── InputDecoration
+//                         │       ├── labelText
+//                         │       ├── hintText
+//                         │       ├── prefixIcon → Icon(Icons.email)
+//                         │       └── border → OutlineInputBorder
+//                         ├── SizedBox
+//                         ├── TextFormField (Password)
+//                         │   └── InputDecoration
+//                         │       ├── labelText
+//                         │       ├── hintText
+//                         │       ├── prefixIcon → Icon(Icons.lock)
+//                         │       └── border → OutlineInputBorder
+//                         ├── SizedBox
+//                         └── ElevatedButton ("Submit")
+//                             └── Text ("Submit")
